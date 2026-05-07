@@ -8,9 +8,14 @@
 import SwiftUI
 
 @main
-struct Life_PlannerApp: App {
+struct PlannerApp: App {
+    
     @StateObject private var plannerViewModel = PlannerViewModel()
-
+    
+    init() {
+        NotificationManager.shared.requestPermission()
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()

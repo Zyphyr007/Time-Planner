@@ -24,6 +24,12 @@ struct ContentView: View {
                     Text("Timetable")
                 }
             
+            FitnessProgressView()
+                .tabItem {
+                    Image(systemName: "chart.line.uptrend.xyaxis")
+                    Text("Fitness")
+                }
+            
             CreateTaskView()
                 .tabItem {
                     Image(systemName: "plus.circle.fill")

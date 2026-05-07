@@ -8,18 +8,16 @@
 import SwiftUI
 
 @main
-struct PlannerApp: App {
+struct Life_PlannerApp: App {
     
     @StateObject private var plannerViewModel = PlannerViewModel()
-    
-    init() {
-        NotificationManager.shared.requestPermission()
-    }
+    @StateObject private var workoutRecordViewModel = WorkoutRecordViewModel()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(plannerViewModel)
+                .environmentObject(workoutRecordViewModel)
         }
     }
 }

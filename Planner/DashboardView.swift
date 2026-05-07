@@ -37,7 +37,8 @@ struct DashboardView: View {
                             SummaryCard(
                                 title: category.name,
                                 count: viewModel.todayCount(for: category.name),
-                                icon: category.icon
+                                icon: category.icon,
+                                color: CategoryColorManager.color(for: category.name)
                             )
                         }
                     }
@@ -81,12 +82,14 @@ struct SummaryCard: View {
     let title: String
     let count: Int
     let icon: String
+    let color: Color
     
     var body: some View {
         VStack(spacing: 10) {
             
             Image(systemName: icon)
                 .font(.title2)
+                .foregroundStyle(color)
             
             Text(title)
                 .font(.headline)
@@ -97,7 +100,7 @@ struct SummaryCard: View {
         }
         .frame(maxWidth: .infinity)
         .padding()
-        .background(Color.gray.opacity(0.15))
+        .background(color.opacity(0.18))
         .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 }

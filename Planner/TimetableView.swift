@@ -18,6 +18,7 @@ struct TimetableView: View {
             ScrollView {
                 VStack(spacing: 0) {
                     
+                    // Header
                     HStack {
                         Text("Time")
                             .frame(width: 70)
@@ -30,6 +31,7 @@ struct TimetableView: View {
                     .padding()
                     .background(Color.gray.opacity(0.2))
                     
+                    // Timetable rows
                     ForEach(hours, id: \.self) { hour in
                         HStack(alignment: .top, spacing: 0) {
                             
@@ -77,8 +79,9 @@ struct TimetableView: View {
     }
     
     private func timetableCard(_ item: PlannerItem) -> some View {
-        VStack(alignment: .leading, spacing: 4) {
-            
+        let categoryColor = CategoryColorManager.color(for: item.categoryName)
+        
+        return VStack(alignment: .leading, spacing: 4) {
             Text(item.title)
                 .font(.headline)
                 .strikethrough(item.isCompleted)
@@ -90,12 +93,12 @@ struct TimetableView: View {
                 .font(.caption)
                 .padding(.horizontal, 8)
                 .padding(.vertical, 3)
-                .background(Color.white.opacity(0.4))
+                .background(Color.white.opacity(0.45))
                 .clipShape(RoundedRectangle(cornerRadius: 6))
         }
         .padding(8)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color.blue.opacity(item.isCompleted ? 0.1 : 0.25))
+        .background(categoryColor.opacity(item.isCompleted ? 0.1 : 0.25))
         .clipShape(RoundedRectangle(cornerRadius: 10))
     }
     

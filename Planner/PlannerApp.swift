@@ -8,10 +8,13 @@
 import SwiftUI
 
 @main
-struct PlannerApp: App {
+struct Life_PlannerApp: App {
+    @StateObject private var plannerViewModel = PlannerViewModel()
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(plannerViewModel)
         }
     }
 }

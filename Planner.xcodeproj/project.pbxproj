@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		3FD83CC42FAC16E400505B03 /* Planner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Planner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FD83CC42FAC16E400505B03 /* Planner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Planner.app; path = "/Users/25221235/Documents/GitHub/Time-Planner/build/Debug/Planner.app"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -33,16 +33,7 @@
 			isa = PBXGroup;
 			children = (
 				3FD83CC62FAC16E400505B03 /* Planner */,
-				3FD83CC52FAC16E400505B03 /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		3FD83CC52FAC16E400505B03 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				3FD83CC42FAC16E400505B03 /* Planner.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -95,7 +86,7 @@
 			mainGroup = 3FD83CBB2FAC16E400505B03;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 3FD83CC52FAC16E400505B03 /* Products */;
+			productRefGroup = 3FD83CBB2FAC16E400505B03;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (

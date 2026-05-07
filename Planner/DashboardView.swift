@@ -14,24 +14,63 @@ struct DashboardView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(spacing: 20) {
+                VStack(spacing: 24) {
                     
-                    VStack(spacing: 8) {
+                    // Header
+                    VStack(alignment: .leading, spacing: 10) {
                         Text("Life Planner")
                             .font(.largeTitle)
                             .bold()
                         
-                        Text("Today's Overview")
+                        Text("Organise your university life.")
+                            .font(.subheadline)
                             .foregroundStyle(.secondary)
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.top)
                     
+                    // Highlight card
+                    VStack(alignment: .leading, spacing: 12) {
+                        HStack {
+                            Image(systemName: "calendar.badge.clock")
+                                .font(.title2)
+                            
+                            Text("Today's Overview")
+                                .font(.title2)
+                                .bold()
+                            
+                            Spacer()
+                        }
+                        
+                        Text("You have \(viewModel.itemsForToday().count) task(s) scheduled today.")
+                            .font(.headline)
+                        
+                        Text("Check your timetable and stay on track.")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(
+                        LinearGradient(
+                            colors: [
+                                Color.blue.opacity(0.25),
+                                Color.purple.opacity(0.18)
+                            ],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .clipShape(RoundedRectangle(cornerRadius: 22))
+                    .shadow(radius: 6)
+                    
+                    // Category Cards
                     LazyVGrid(
                         columns: [
                             GridItem(.flexible()),
                             GridItem(.flexible())
                         ],
-                        spacing: 12
+                        spacing: 14
                     ) {
                         ForEach(viewModel.categories) { category in
                             SummaryCard(
@@ -43,29 +82,44 @@ struct DashboardView: View {
                         }
                     }
                     
-                    VStack(alignment: .leading, spacing: 12) {
-                        
-                        Text("Today's Tasks")
-                            .font(.title2)
-                            .bold()
+                    // Today's Tasks
+                    VStack(alignment: .leading, spacing: 14) {
+                        HStack {
+                            Text("Today's Tasks")
+                                .font(.title2)
+                                .bold()
+                            
+                            Spacer()
+                            
+                            Image(systemName: "checklist")
+                                .font(.title3)
+                                .foregroundStyle(.secondary)
+                        }
                         
                         if viewModel.itemsForToday().isEmpty {
-                            
-                            Text("No tasks scheduled today.")
-                                .foregroundStyle(.secondary)
-                                .padding()
-                                .frame(maxWidth: .infinity)
-                                .background(Color.gray.opacity(0.1))
-                                .clipShape(RoundedRectangle(cornerRadius: 12))
-                            
+                            VStack(spacing: 10) {
+                                Image(systemName: "tray")
+                                    .font(.largeTitle)
+                                    .foregroundStyle(.secondary)
+                                
+                                Text("No tasks scheduled today.")
+                                    .foregroundStyle(.secondary)
+                            }
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.gray.opacity(0.1))
+                            .clipShape(RoundedRectangle(cornerRadius: 16))
                         } else {
-                            
                             ForEach(viewModel.itemsForToday()) { item in
                                 PlannerRow(item: item)
-                                    .padding(.horizontal)
-                                    .padding(.vertical, 6)
-                                    .background(Color.gray.opacity(0.1))
-                                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                                    .padding()
+                                    .background(
+                                        CategoryColorManager
+                                            .color(for: item.categoryName)
+                                            .opacity(0.12)
+                                    )
+                                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                                    .shadow(radius: 2)
                             }
                         }
                     }
@@ -85,22 +139,35 @@ struct SummaryCard: View {
     let color: Color
     
     var body: some View {
-        VStack(spacing: 10) {
-            
-            Image(systemName: icon)
-                .font(.title2)
-                .foregroundStyle(color)
+        VStack(alignment: .leading, spacing: 12) {
+            HStack {
+                Image(systemName: icon)
+                    .font(.title2)
+                    .foregroundStyle(color)
+                
+                Spacer()
+                
+                Text("\(count)")
+                    .font(.title)
+                    .bold()
+            }
             
             Text(title)
                 .font(.headline)
-            
-            Text("\(count)")
-                .font(.title)
-                .bold()
         }
-        .frame(maxWidth: .infinity)
         .padding()
-        .background(color.opacity(0.18))
-        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .frame(maxWidth: .infinity, minHeight: 120, alignment: .leading)
+        .background(
+            LinearGradient(
+                colors: [
+                    color.opacity(0.25),
+                    color.opacity(0.08)
+                ],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 20))
+        .shadow(radius: 4)
     }
 }

@@ -98,10 +98,13 @@ struct CreateTaskView: View {
     }
     
     private func createTask() {
+        
         let finalCategoryName: String
         
         if useCustomCategory {
-            let trimmedCategory = customCategoryName.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            let trimmedCategory = customCategoryName
+                .trimmingCharacters(in: .whitespacesAndNewlines)
             
             guard !trimmedCategory.isEmpty else {
                 return
@@ -109,6 +112,7 @@ struct CreateTaskView: View {
             
             viewModel.addCategory(name: trimmedCategory)
             finalCategoryName = trimmedCategory
+            
         } else {
             finalCategoryName = selectedCategoryName
         }
@@ -119,6 +123,12 @@ struct CreateTaskView: View {
             startTime: startTime,
             endTime: endTime,
             priority: priority
+        )
+        
+        NotificationManager.shared.scheduleReminder(
+            title: "Task Reminder",
+            body: "\(title) is starting now.",
+            date: startTime
         )
         
         title = ""

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		3FD83CC42FAC16E400505B03 /* Planner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Planner.app; path = "/Users/25221235/Documents/GitHub/Time-Planner/build/Debug/Planner.app"; sourceTree = "<absolute>"; };
+		D2EF553B2FAC1D23009B610D /* Planner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Planner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -33,6 +33,7 @@
 			isa = PBXGroup;
 			children = (
 				3FD83CC62FAC16E400505B03 /* Planner */,
+				D2EF553B2FAC1D23009B610D /* Planner.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,7 +59,7 @@
 			packageProductDependencies = (
 			);
 			productName = Planner;
-			productReference = 3FD83CC42FAC16E400505B03 /* Planner.app */;
+			productReference = D2EF553B2FAC1D23009B610D /* Planner.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */

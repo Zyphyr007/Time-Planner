@@ -2,7 +2,7 @@
 //  ReminderView.swift
 //  Planner
 //
-//  Created by Zhenqiang Chen on 7/5/2026.
+//  Created by Zicheng Mei on 7/5/2026.
 //
 
 import SwiftUI
